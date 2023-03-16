@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <record model="ir.ui.view" id="metal_price.list">
+            <field name="name">metal_price list</field>
+            <field name="model">metal.price</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date"/>
+                    <field name="price"/>
+                </tree>
+            </field>
+        </record>
 
 
- <record model="ir.ui.view" id="metal_price_wizarad">
+        <record model="ir.ui.view" id="metal_price_wizarad">
             <field name="name">metal.price.move.form</field>
             <field name="model">metal.price.wizard</field>
             <field name="arch" type="xml">
@@ -19,19 +29,26 @@
                 </form>
             </field>
         </record>
-    <record id="metal_price_action" model="ir.actions.act_window">
+        <record id="metal_price_action" model="ir.actions.act_window">
             <field name="name">Metal Price</field>
             <field name="res_model">metal.price.wizard</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
         </record>
 
+        <record model="ir.actions.act_window" id="metal_price.action_window">
+            <field name="name">metal_price window</field>
+            <field name="res_model">metal.price</field>
+            <field name="view_mode">tree,form</field>
+        </record>
 
 
+        <menuitem id="metal_price_menu_table" name="Metal Price Table" parent="account.menu_finance"
+                  action="metal_price.action_window" sequence="5"/>
 
 
-    <menuitem id="metal_price_menu" name="Metal Price" parent="account.menu_finance" action="metal_price_action" sequence="4"/>
-
+        <menuitem id="metal_price_menu" name="Metal Price" parent="account.menu_finance" action="metal_price_action"
+                  sequence="4"/>
 
 
     </data>
